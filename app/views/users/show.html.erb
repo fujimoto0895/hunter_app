@@ -1,0 +1,43 @@
+<ul>
+    <li>
+      <%= link_to user_path(@user) do %>
+        <div class="text">投稿数</div>
+        <div class="num"><%= @user.posts.count %></div>
+      <% end %>
+    </li>
+    
+    <li>
+<!-- フォローしている人の一覧 -->
+      <%= link_to follows_user_relationships_path(@user) do %>
+        <div class="text">フォロー</div>
+        <div class="num"><%= @user.followings.count %></div>
+      <% end %>
+    </li>
+    
+    <li>
+      <%= link_to followers_user_relationships_path(@user) do %>
+        <div class="text">フォロワー</div>
+        <div class="num"><%= @user.followers.count %></div>
+      <% end %>
+    </li>
+
+    <li>
+      <%= link_to favorites_user_relationships_path(@user) do %>
+        <div class="text">いいね一覧</div>
+        <div class="num"><%= @user.favorites.count %></div>
+      <% end %>     
+    </li>
+</ul>
+
+<% @user.posts.each do |post| %>
+  <div class="post-title">
+      <%= link_to post.title, post_path(post) %>
+  </div>  
+  <div class="post-body">
+      <%= post.body %>
+  </div>
+  <div class="post-photo">
+      <%#= attachment_image_tag post.photo_id, :photo, :fill, 100, 100, format: "jpg" %>
+  </div>
+
+<% end %>
