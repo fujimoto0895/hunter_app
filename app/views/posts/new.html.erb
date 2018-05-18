@@ -1,5 +1,32 @@
-<h1>活動記録を書くよ</h1>
+<style>
+	h1{
+	  padding-top: 100px;
+  	line-height: 64px;	
+  	color: white;
+  	padding-left: 15px;
+  	text-align: center;
+  	font:  'Avenir Next', 'Hiragino Sans', sans-serif;
+	}
+
+	.actions.btn{
+    margin: 20px auto 0; 
+    display: block;
+    width: 200px;
+    background-color: #8888bb;
+    line-height: 44px;
+    text-align: center;
+    font-size: 22px;
+    border-radius: 6px;
+    appearance: none;
+    border: none;
+    color: #fff;
+  }
+</style>
+
+<h1>活動内容をみんなに伝えよう</h1>
 
 <%= render 'form', post: @post %>
 
-<%= link_to '戻る', posts_path %>
+<div class="actions">
+  <%= link_to "戻る", posts_path, :class=>"btn" %>
+</div>

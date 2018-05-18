@@ -8,7 +8,7 @@ class Post < ApplicationRecord
 
  acts_as_ordered_taggable_on :interests
  # acts_as_taggable_on :tags のエイリアス
- acts_as_taggable           
+ acts_as_taggable
 
  has_many :favorites, dependent: :destroy
 

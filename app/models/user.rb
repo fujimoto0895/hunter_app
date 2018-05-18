@@ -6,7 +6,14 @@ class User < ApplicationRecord
 
   validates :name, presence: true, uniqueness: true
 
-  attachment :photo
+  #attachment :photo
+
+  #validates_presence_of :photo
+
+ # acts_as_taggable_on :tags のエイリアス
+  acts_as_taggable
+
+  acts_as_ordered_taggable_on :skills, :interests
 
   has_many :posts, dependent: :destroy
   

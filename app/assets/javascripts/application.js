@@ -13,3 +13,7 @@
 //= require rails-ujs
 //= require turbolinks
 //= require_tree .
+
+//= require bootstrap-sprockets
+@import "bootstrap-sprockets";
+@import "bootstrap";

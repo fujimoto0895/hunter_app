@@ -17,11 +17,11 @@ class UsersController < ApplicationController
   end
 
   def followers
-    @user = User.find(params[:id])
+    @user  = User.find(params[:id])
+  end
+
+  def user_params
+  params.require(:user).permit(:name, :skill_list, :interest_list)
   end
   
-  # def post_params
-  #     params.require(:post).permit(:title, :body, :user_id, :photo, :interest_list)
-  # end
-
 end

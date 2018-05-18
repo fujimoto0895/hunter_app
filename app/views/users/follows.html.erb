@@ -19,7 +19,7 @@
     </li>
     <li>
       <%= link_to favorites_user_path(@user) do %>
-        <div class="text">いいね一覧</div>
+        <div class="text">いいね</div>
         <div class="num"><%= @user.favorites.count %></div>
       <% end %>     
     </li>
@@ -28,6 +28,7 @@
     <div>
         <%= link_to u.name, user_path(u) %>
         <span>@<%= u.name %></span>
+
     </div>
     <div class="bio">
         <%= u.bio %>

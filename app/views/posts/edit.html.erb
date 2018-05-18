@@ -1,6 +1,31 @@
-<h1>Editing Post</h1>
+<style >
+	h1{
+	padding-top: 100px;
+  	line-height: 64px;	
+  	color: white;
+  	padding-left: 15px;
+  	text-align: center;
+  	font:  'Avenir Next', 'Hiragino Sans', sans-serif;
+	}
+
+	.actions .btn{
+    margin: 20px auto 0; 
+    display: block;
+    width: 200px;
+    background-color: #8888bb;
+    line-height: 44px;
+    text-align: center;
+    font-size: 18px;
+    border-radius: 6px;
+    appearance: none;
+    border: none;
+    color: #fff;
+  }
+</style>
+
+<h1>投稿内容を変更</h1>
 
 <%= render 'form', post: @post %>
 
-<%= link_to 'Show', @post %> |
-<%= link_to 'Back', posts_path %>
+<%= link_to '詳細に戻る', @post, :class=>"btn" %> 
+<%= link_to '戻る', posts_path, :class=>"btn" %>

@@ -12,7 +12,8 @@ class RelationshipsController < ApplicationController
             redirect_to posts_url, alert: "フォローできません"
         end
     end
-    
+   
+
     def destroy
     	# これからフォロー外す人
         @user = User.find(params[:user_id])

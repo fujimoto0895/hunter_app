@@ -1,14 +1,44 @@
-<% @users.each do |u| %>
-    <div>
-        <%= link_to u.name, user_path(u) %>
-        <span>@<%= u.name %></span>
-    </div>
+<style>
+h2{
+    padding-top: 100px;
+    line-height: 64px;
+    color: white;
+    padding-left: 15px;
+    text-align: center;
+    font:  'Avenir Next', 'Hiragino Sans', sans-serif;
+  }
+  .post{
+    
+    padding-top: 100px;
+    display: grid;
+    grid-template-columns: grid-template-columns:repeat(auto-fill, minmax(200px, 1fr));
+    width: 600px;
+    font-size: 20px;
+    color: white;
+    margin: 0 auto; 
+  }
+  .wrap{
+    padding-right: 300px;
+    padding-left: 300px;
+    margin: 0 auto;
+}
+</style>
 
-    <div class="follow-unfollow">
-        <% if u.followed_by? current_user %>
-          <%= link_to "フォロー解除", user_relationships_path(u), method: :delete %>
-        <% else %>
-          <%= link_to "フォロー", user_relationships_path(u), method: :post %>
-        <% end %>
-    </div>
-<% end %>
+<h2>ユーザー情報</h2>
+
+<div class="wrap">
+    <% @users.each do |u| %>
+        <div class="post">
+            <div>
+                <%= link_to u.name, user_path(u) %>
+                    <span>@<%= u.name %></span>
+            </div>
+        <div class="follow-unfollow">
+            <% if u.followed_by? current_user %>
+                <%= link_to "フォロー解除", user_relationships_path(u), method: :delete %>
+            <% else %>
+                <%= link_to "フォロー", user_relationships_path(u), method: :post %>
+            <% end %>
+        </div>
+    <% end %>
+</div>

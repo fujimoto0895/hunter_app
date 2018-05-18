@@ -1,27 +1,61 @@
-<p id="notice"><%= notice %></p>
+<style>
+	
+	.container{
+		padding-top: 100px;
+		max-width: 600px;
+  		margin: 60px auto;
+  		padding-left: 15px;
+  		padding-right: 15px;
+  		clear: both;
+	}
+	.title{
+		font-size: 20px;
+	}
+	.btn{
+		margin: 20px auto 0;
+	    display: block;
+	    width: 200px;
+	    background-color: #8888bb;
+	    line-height: 44px;
+	    text-align: center;
+	    font-size: 18px;
+	    border-radius: 6px;
+	    appearance: none;
+	    border: none;
+	    color: #fff;
 
-<p>
-  <strong>Title:</strong>
-  <%= @post.title %>
-</p>
+	}
+	.btn　:hover{
+		 background-color:#ffc9d7;
+	}
 
-<p>
-  <strong>Body:</strong>
-  <%= @post.body %>
-</p>
 
-<p>
-  <strong>Photo:</strong>
-  <%= attachment_image_tag @post, :photo, :fill, 100, 100, format: "jpg" %>
-</p>
-<p>
-<strong>タグ:</strong>
-<%#= render 'posts/tag_list' @post, tag_list: post.interest_list %>
-</p>
+</style>
 
-<% if current_user.id == @post.user_id %>
+<div class="container">
+  	<div class="title"><%= @post.title %></div>
+  	<div class="body"><%= @post.body %></div>
+  	<div class="photo">
+   	 	<%= attachment_image_tag @post, :photo, :fill, 350, 350, format: 'jpg' %>  
+   	</div>
+	<div class="tag_list">
+		<%= render 'posts/tag_list', tag_list: @post.interest_list %>
+	</div>
 
-<%= link_to '編集', edit_post_path(@post) %> |
-<%= link_to '削除', @post, method: :delete, data: { confirm: '本当に削除しますか?' } %> |
-<% end %>
-<%= link_to '戻る', posts_path %>
+	 <% if current_user.id == @post.user_id %>
+		<div class="btn">
+			<%= link_to '編集', edit_post_path(@post) %>
+		</div>
+		<div class="btn">
+			<%= link_to '削除', @post, method: :delete, data: { confirm: '本当に削除しますか?' } %>
+		</div>
+	<% end %>
+</div>
+ 
+<div class="btn">
+	<%= link_to '戻る', posts_path,:class=>"btn" %>
+</div>
+
+
+
+ 

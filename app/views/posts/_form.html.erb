@@ -1,37 +1,82 @@
-<%= form_with(model: post, local: true) do |form| %>
-  <% if post.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(post.errors.count, "error") %> prohibited this post from being saved:</h2>
+<style>
+  .form {
+    width: 600px;
+    margin: 0 auto;
+    background-color: #3ecdc6;
+  }
+  .form .btn {
+    margin: 20px auto 0;
+    display: block;
+    width: 200px;  
+    line-height: 44px;
+    text-align: center;
+    font-size: 22px;
+    border-radius: 6px;
+    appearance: none;
+    border: none;
+    color: #fff;
+  }
+  .field input[type="text"],
+  .field input[type="body"],
+  .field input[type="photo"] {
+    width: 100%;
+    border-radius: 4px;
+    line-height: 32px;
+    border: 1px solid #ccc;
+    padding: 0 15px;
+    background-color: rgb(250, 255, 189) !important;
+    background-image: none !important;
+    color: rgb(0, 0, 0) !important;
+  }
+.btn{
+    margin: 20px auto 0; 
+    display: block;
+    width: 200px;
+    background-color: #8888bb;
+    line-height: 44px;
+    text-align: center;
+    font-size: 18px;
+    border-radius: 6px;
+    appearance: none;
+    border: none;
+    color: #fff;
+  }
+</style>
 
-      <ul>
-      <% post.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
+<div class="form">
+  <%= form_with(model: post, local: true) do |form| %>
+    <% if post.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(post.errors.count, "error") %> prohibited this post from being saved:</h2>
+          <ul>
+            <% post.errors.full_messages.each do |message| %>
+              <li><%= message %></li>
+            <% end %>
+          </ul>
+      </div>
+    <% end %>
+
+    <div class="field">
+      <%= form.label :title, "タイトル" %>
+      <%= form.text_field :title, id: :post_title %>
+    </div>
+
+    <div class="field">
+      <%= form.label :body, "活動内容" %>
+      <%= form.text_area :body, id: :post_body %>
+    </div>
+
+    <div class="field">
+      <%= form.attachment_field :photo %>
+    </div>
+
+    <div class="field">
+      <%= form.label :interest_list, "興味・関心（カンマ区切り）" %><br>
+      <%= text_field_tag 'post[interest_list]', @post.interest_list.join(',') %>
+    </div>
+
+    <div class="actions">
+      <%= form.submit "投稿する", :class =>"btn" %>
     </div>
   <% end %>
-
-  <div class="field">
-    <%= form.label :title %>
-    <%= form.text_field :title, id: :post_title %>
-  </div>
-
-  <div class="field">
-    <%= form.label :body %>
-    <%= form.text_area :body, id: :post_body %>
-  </div>
-
-  <div class="field">
-    <%= form.attachment_field :photo %>
-  </div>
-
-  <div class="field">
-    <%= form.label :interest_list, "興味・関心（カンマ区切り）" %><br>
-    <%= text_field_tag 'post[interest_list]', @post.interest_list.join(',') %>
-  </div>
-
-  <div class="actions">
-    <%= form.submit %>
-  </div>
-
-<% end %>
+</div>

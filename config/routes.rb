@@ -2,11 +2,17 @@ Rails.application.routes.draw do
   
   devise_for :users
 
-  root 'posts#index'
+  root 'home#index'
+
+  get 'home/about'
+
+  get 'posts/index'
 
   get 'users/index'
 
   get 'users/show'
+
+
 
   resources :users, only: [:index, :edit, :update, :show] do
     resource :relationships, only: [:create, :destroy] do
@@ -15,6 +21,11 @@ Rails.application.routes.draw do
       get :followers, on: :member
     end
   end  
+  resources :users do
+    member do
+     get :following, :followers
+    end
+  end
   
   resources :posts do
   	resource :favorites, only: [:create, :destroy]
